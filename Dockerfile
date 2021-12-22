@@ -27,4 +27,4 @@ WORKDIR /
 COPY --from=build-env /go/bin/dlv /
 COPY --from=build-env /server /
 
-CMD ["/dlv", "--listen=:40000", "--headless=true", "--api-version=2", "--accept-multiclient", "exec", "/server"]
+CMD ["/dlv", "--listen=:40000", "--headless=true", "--api-version=2", "--accept-multiclient", "--log", "exec", "/server"]
