@@ -2,11 +2,8 @@
   <configuration default="false" name="Docker - Web - Standalone Debug" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
     <deployment type="dockerfile">
       <settings>
-        <option name="buildCliOptions" value="" />
-        <option name="command" value="" />
+        <option name="imageTag" value="dlv-server:1.17.2-alpine" />
         <option name="containerName" value="dockerdev-web-standalone" />
-        <option name="entrypoint" value="" />
-        <option name="imageTag" value="" />
         <option name="portBindings">
           <list>
             <DockerPortBindingImpl>

@@ -1,26 +1,21 @@
-# Compile stage
-FROM golang:1.17.2-alpine AS build-env
+FROM debian:buster
 
-RUN apk add --no-cache g++ git
+RUN apt update && \
+    apt install -y curl
 
-# Build Delve
-RUN go get github.com/go-delve/delve/cmd/dlv
+# Work inside the /tmp directory
+WORKDIR /tmp
 
-ADD . /dockerdev
+RUN curl https://storage.googleapis.com/golang/go1.16.2.linux-amd64.tar.gz -o go.tar.gz && \
+    tar -zxf go.tar.gz && \
+    rm -rf go.tar.gz && \
+    mv go /go
 
-WORKDIR /dockerdev
+ENV GOPATH /go
 
-RUN go build -gcflags="all=-N -l" -o /server
+ENV PATH $PATH:/go/bin:$GOPATH/bin
 
-# Final stage
-#FROM alpine:3.14
+# If you enable this, then gcc is needed to debug your app
+ENV CGO_ENABLED 0
 
-#RUN apk add --no-cache
-
-#EXPOSE 8000 40000
-
-#WORKDIR /
-#COPY --from=build-env /go/bin/dlv /
-#COPY --from=build-env /server /
-
-#CMD ["/dlv", "--listen=:40000", "--headless=true", "--api-version=2", "--accept-multiclient", "exec", "/server"]
+# TODO: Add other dependencies and stuff here

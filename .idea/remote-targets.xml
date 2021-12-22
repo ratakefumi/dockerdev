@@ -27,8 +27,8 @@
         <ContributedStateBase type="GoLanguageRuntime">
           <config>
             <option name="goPath" value="/go" />
-            <option name="goRoot" value="/usr/local/go/bin/go" />
-            <option name="goVersion" value="go1.17.2 linux/amd64" />
+            <option name="goRoot" value="/go/bin/go" />
+            <option name="goVersion" value="go1.16.2 linux/amd64" />
           </config>
         </ContributedStateBase>
       </target>
