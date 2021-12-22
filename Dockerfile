@@ -13,14 +13,14 @@ WORKDIR /dockerdev
 RUN go build -gcflags="all=-N -l" -o /server
 
 # Final stage
-FROM alpine:3.14
+#FROM alpine:3.14
 
-RUN apk add --no-cache
+#RUN apk add --no-cache
 
-EXPOSE 8000 40000
+#EXPOSE 8000 40000
 
-WORKDIR /
-COPY --from=build-env /go/bin/dlv /
-COPY --from=build-env /server /
+#WORKDIR /
+#COPY --from=build-env /go/bin/dlv /
+#COPY --from=build-env /server /
 
-CMD ["/dlv", "--listen=:40000", "--headless=true", "--api-version=2", "--accept-multiclient", "exec", "/server"]
+#CMD ["/dlv", "--listen=:40000", "--headless=true", "--api-version=2", "--accept-multiclient", "exec", "/server"]
