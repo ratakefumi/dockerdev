@@ -1,16 +1,21 @@
 # Compile stage
-FROM golang:1.13.8 AS build-env
+FROM golang:1.17.2-alpine AS build-env
+
+RUN apk add --no-cache g++ git
 
 # Build Delve
 RUN go get github.com/go-delve/delve/cmd/dlv
 
 ADD . /dockerdev
+
 WORKDIR /dockerdev
 
 RUN go build -gcflags="all=-N -l" -o /server
 
 # Final stage
-FROM debian:buster
+FROM alpine:3.14
+
+RUN apk add --no-cache
 
 EXPOSE 8000 40000
 
