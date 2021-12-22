@@ -10,7 +10,11 @@ ADD . /dockerdev
 
 WORKDIR /dockerdev
 
-RUN go build -gcflags="all=-N -l" -o /server
+RUN go mod tidy
+
+# Compile the application with the optimizations turned off
+# This is important for the debugger to correctly work with the binary
+RUN go build -gcflags "all=-N -l" -o /server
 
 # Final stage
 FROM alpine:3.14
