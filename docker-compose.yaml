@@ -16,7 +16,7 @@ services:
       - "seccomp:unconfined"
     cap_add:
       - SYS_PTRACE
-    command: /dlv --headless --listen=:40000 --api-version=2 --log exec /server
+    #command: /dlv --headless --listen=:40000 --api-version=2 --log exec /server
     depends_on:
       - db
   db:
