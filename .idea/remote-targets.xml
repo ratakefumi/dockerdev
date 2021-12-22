@@ -2,14 +2,14 @@
 <project version="4">
   <component name="RemoteTargetsManager">
     <targets>
-      <target name="golang:1.17.2-alpine" type="docker">
+      <target name="dev:1.17.2-alpine" type="docker">
         <config>
           <option name="targetPlatform">
             <TargetPlatform />
           </option>
           <option name="buildImageConfig">
             <BuildImageConfig>
-              <option name="builtImageTag" value="&lt;none&gt;:&lt;none&gt;" />
+              <option name="builtImageTag" value="dlv-server:1.17.2-alpine" />
               <option name="dockerFile" value="Dockerfile" />
             </BuildImageConfig>
           </option>
